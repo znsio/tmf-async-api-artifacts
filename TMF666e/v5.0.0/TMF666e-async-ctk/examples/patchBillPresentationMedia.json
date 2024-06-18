@@ -1,0 +1,24 @@
+{
+    "channel": {
+        "accountManagement.v5.patchBillPresentationMedia.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillPresentationMedia",
+                        "@baseType": "string",
+                        "@schemaLocation": "string",
+                        "name": "string",
+                        "description": "string"
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.patchBillPresentationMedia.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

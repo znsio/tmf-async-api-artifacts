@@ -1,0 +1,19 @@
+{
+    "channel": {
+        "accountManagement.v5.createBillingCycleSpecification.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillingCycleSpecification",
+                        "name": "Monthly billing"
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.createBillingCycleSpecification.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

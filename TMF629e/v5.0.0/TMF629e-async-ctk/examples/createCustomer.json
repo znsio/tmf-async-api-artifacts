@@ -1,0 +1,66 @@
+{
+    "channel": {
+        "customerManagement.v5.createCustomer.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Customer",
+                        "name": "Moon Football Club",
+                        "engagedParty": {
+                            "@type": "PartyRef",
+                            "href": "https://host:port/tmf-api/partyManagement/v5/organization/500",
+                            "id": "500",
+                            "name": "Happy Travellers",
+                            "@referredType": "Organization",
+                            "topicRef": "kafka://host:port/requestTopicName"
+                        },
+                        "contactMedium": [
+                            {
+                                "@type": "PhoneContactMedium",
+                                "preferred": true,
+                                "contactType": "homePhone",
+                                "validFor": {
+                                    "startDateTime": "2018-06-12T00:00:00.000Z",
+                                    "endDateTime": "2019-01-01T00:00:00.000Z"
+                                },
+                                "phoneNumber": "01 09 75 83 51"
+                            },
+                            {
+                                "@type": "GeographicAddressContactMedium",
+                                "preferred": false,
+                                "contactType": "homeAddress",
+                                "validFor": {
+                                    "startDateTime": "2018-06-12T00:00:00.000Z",
+                                    "endDateTime": "2019-01-01T00:00:00.000Z"
+                                },
+                                "city": "Paris",
+                                "country": "France",
+                                "postCode": "75014",
+                                "street1": "15 Rue des Canards"
+                            }
+                        ],
+                        "relatedParty": [
+                            {
+                                "@type": "RelatedPartyRefOrPartyRoleRef",
+                                "role": "bill receiver",
+                                "PartyRefOrPartyRoleRef": {
+                                    "@type": "PartyRef",
+                                    "href": "https://host:port/tmf-api/partyManagement/v5/organization/2777",
+                                    "id": "2777",
+                                    "name": "John Doe (Accounting) Ltd",
+                                    "@referredType": "Organization",
+                                    "topicRef": "kafka://host:port/requestTopicName"
+                                }
+                            }
+                        ]
+                    },
+                    "headers": {
+                        "Reply-Channel": "customerManagement.v5.createCustomer.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

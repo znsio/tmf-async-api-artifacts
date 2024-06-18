@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "productCatalogManagement.v5.retrieveProductOfferingPrice.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "productCatalogManagement.v5.retrieveProductOfferingPrice.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

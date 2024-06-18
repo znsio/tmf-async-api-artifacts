@@ -1,0 +1,29 @@
+{
+    "channel": {
+        "customerManagement.v5.patchCustomer.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Customer",
+                        "name": "Sun Football Club",
+                        "engagedParty": {
+                            "@type": "PartyRef",
+                            "href": "https://host:port/tmf-api/partyManagement/v5/organization/237",
+                            "id": "237",
+                            "name": "Another Long Distance Travellers",
+                            "@referredType": "Organization",
+                            "topicRef": "kafka://host:port/requestTopicName"
+                        }
+                    },
+                    "headers": {
+                        "Reply-Channel": "customerManagement.v5.patchCustomer.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

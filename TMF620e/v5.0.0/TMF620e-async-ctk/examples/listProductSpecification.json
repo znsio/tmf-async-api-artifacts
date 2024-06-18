@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "productCatalogManagement.v5.listProductSpecification.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "productCatalogManagement.v5.listProductSpecification.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

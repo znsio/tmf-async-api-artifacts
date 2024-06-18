@@ -1,0 +1,76 @@
+name: tmf637e-async-ri
+services:
+    async-bridge:
+        depends_on:
+        - kafka
+        - http-ri
+        environment:
+            ASYNC_RI_ENTITIES: Product
+            ASYNC_RI_HTTP_RI_URL: http://http-ri:8637
+            ASYNC_RI_KAFKA_BOOT_STRAP_SERVERS: kafka:29092
+            ASYNC_RI_PREFIXES: ''
+            ASYNC_RI_TOP_LEVEL_ENTITY: productInventory
+        image: ghcr.io/tmforum-rand/ri_docker_images/async-ri-bridge-v5:latest
+        volumes:
+        - ./gradle_cache:/cache:rw
+        - ~/.m2:/m2:ro
+        - ./:/usr/src/app:rw
+    http-ri:
+        depends_on:
+        - kafka
+        - mongo
+        image: ghcr.io/tmforum-rand/ri_docker_images/ri637-ghcr:latest
+        ports:
+        - 8637:8637
+        volumes:
+        - ./expressServer.js:/usr/src/app/expressServer.js
+    kafdrop:
+        depends_on:
+        - kafka
+        environment:
+            JVM_OPTS: -Xms32M -Xmx64M
+            KAFKA_BROKERCONNECT: kafka:29092
+        image: obsidiandynamics/kafdrop
+        ports:
+        - 9000:9000
+    kafka:
+        depends_on:
+        - zookeeper
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:29092,LISTENER_EXTERNAL://localhost:9092
+            KAFKA_BROKER_ID: 1
+            KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+            KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+            KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://0.0.0.0:29092,LISTENER_EXTERNAL://0.0.0.0:9092
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_EXTERNAL:PLAINTEXT
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+            KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        image: confluentinc/cp-kafka:latest
+        ports:
+        - 9092:9092
+        - 29092:29092
+    mongo:
+        image: mongo
+        ports:
+        - 27017:27017
+    mongodbCompass:
+        environment:
+            ME_CONFIG_BASICAUTH_PASSWORD: password
+            ME_CONFIG_BASICAUTH_USERNAME: admin
+            ME_CONFIG_MONGODB_PORT: 27017
+            ME_CONFIG_MONGODB_SERVER: mongo
+        image: mongo-express
+        ports:
+        - 8081:8081
+    zookeeper:
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_TICK_TIME: 2000
+        image: confluentinc/cp-zookeeper:latest
+        ports:
+        - 2181:2181
+version: '3.8'
+volumes:
+    gradle-cache: null

@@ -1,0 +1,25 @@
+{
+    "channel": {
+        "accountManagement.v5.patchSettlementAccount.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "SettlementAccount",
+                        "paymentStatus": "Normal",
+                        "creditLimit": {
+                            "unit": "USD",
+                            "value": 25000
+                        }
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.patchSettlementAccount.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

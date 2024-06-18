@@ -1,0 +1,25 @@
+{
+    "channel": {
+        "productCatalogManagement.v5.patchProductOffering.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "version": "3.0",
+                        "validFor": {
+                            "startDateTime": "2020-11-06T00:00:00.000Z",
+                            "endDateTime": "2021-11-06T00:00:00.000Z"
+                        },
+                        "@type": "ProductOffering"
+                    },
+                    "headers": {
+                        "Reply-Channel": "productCatalogManagement.v5.patchProductOffering.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

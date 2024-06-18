@@ -1,0 +1,21 @@
+{
+    "channel": {
+        "accountManagement.v5.patchBillingAccount.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillingAccount",
+                        "name": "Richard Cole Account"
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.patchBillingAccount.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

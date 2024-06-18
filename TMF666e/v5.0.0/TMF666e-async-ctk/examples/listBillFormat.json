@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "accountManagement.v5.listBillFormat.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.listBillFormat.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

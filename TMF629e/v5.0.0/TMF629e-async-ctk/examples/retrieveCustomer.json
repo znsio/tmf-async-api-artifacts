@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "customerManagement.v5.retrieveCustomer.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "customerManagement.v5.retrieveCustomer.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

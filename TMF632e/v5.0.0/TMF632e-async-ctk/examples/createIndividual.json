@@ -1,0 +1,21 @@
+{
+    "channel": {
+        "partyManagement.v5.createIndividual.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Individual",
+                        "@baseType": "Party",
+                        "givenName": "Jane",
+                        "familyName": "Lamborgizzia"
+                    },
+                    "headers": {
+                        "Reply-Channel": "partyManagement.v5.createIndividual.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "channel": {
+        "partyManagement.v5.patchOrganization.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Organization",
+                        "@baseType": "string",
+                        "@schemaLocation": "string",
+                        "externalReference": [],
+                        "partyCharacteristic": [],
+                        "taxExemptionCertificate": [],
+                        "creditRating": [],
+                        "relatedParty": [],
+                        "contactMedium": [],
+                        "isLegalEntity": true,
+                        "isHeadOffice": true,
+                        "organizationType": "string",
+                        "existsDuring": {
+                            "startDateTime": "1985-04-12T23:20:50.520Z",
+                            "endDateTime": "1985-04-12T23:20:50.520Z"
+                        },
+                        "name": "string",
+                        "nameType": "string",
+                        "status": "initialized",
+                        "otherName": [],
+                        "organizationIdentification": [],
+                        "organizationChildRelationship": [],
+                        "organizationParentRelationship": {
+                            "@type": "OrganizationParentRelationship",
+                            "@baseType": "string",
+                            "@schemaLocation": "string",
+                            "relationshipType": "string",
+                            "organization": {
+                                "@type": "OrganizationRef",
+                                "@baseType": "string",
+                                "@schemaLocation": "string",
+                                "href": "string",
+                                "id": "string",
+                                "name": "string",
+                                "@referredType": "string",
+                                "topicRef": "string"
+                            }
+                        },
+                        "tradingName": "string"
+                    },
+                    "headers": {
+                        "Reply-Channel": "partyManagement.v5.patchOrganization.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

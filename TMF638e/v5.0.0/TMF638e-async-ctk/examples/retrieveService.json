@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "serviceInventoryManagement.v5.retrieveService.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "serviceInventoryManagement.v5.retrieveService.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

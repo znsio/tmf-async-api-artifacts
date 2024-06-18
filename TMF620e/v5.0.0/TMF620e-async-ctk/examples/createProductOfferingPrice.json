@@ -1,0 +1,117 @@
+{
+    "channel": {
+        "productCatalogManagement.v5.createProductOfferingPrice.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "name": "Recurring Charge for Business Firewall",
+                        "description": "This pricing describes the recurring charge for a firewall service that can be deployed in business customer premise.",
+                        "version": "1.0",
+                        "validFor": {
+                            "startDateTime": "2020-09-22T00:00:00.000Z",
+                            "endDateTime": "2021-09-22T00:00:00.000Z"
+                        },
+                        "priceType": "recurring",
+                        "recurringChargePeriodType": "monthly",
+                        "recurringChargePeriodLength": 1,
+                        "lastUpdate": "2020-09-23T00:00:00.000Z",
+                        "isBundle": false,
+                        "lifecycleStatus": "Active",
+                        "unitOfMeasure": {
+                            "amount": 1,
+                            "units": "Month"
+                        },
+                        "price": {
+                            "unit": "EUR",
+                            "value": 50
+                        },
+                        "percentage": 0,
+                        "productOfferingTerm": [
+                            {
+                                "name": "12 Month",
+                                "description": "12 month contract",
+                                "duration": {
+                                    "amount": 12,
+                                    "units": "Month"
+                                },
+                                "validFor": {
+                                    "startDateTime": "2020-09-22T16:42:23.000Z",
+                                    "endDateTime": "2021-09-22T00:00:00.000Z"
+                                },
+                                "@type": "ProductOfferingTerm"
+                            }
+                        ],
+                        "place": [
+                            {
+                                "id": "2707",
+                                "href": "https://mycsp.com:8080/tmf-api/geographicAddressManagement/v5/geographicAddress/2707",
+                                "name": "San Francisco Bay Area",
+                                "@referredType": "GeographicAddress",
+                                "@type": "PlaceRef",
+                                "topicRef": "kafka://mycsp.com/productCatalogManagement.v5.createProductOfferingPrice.commandRequest"
+                            }
+                        ],
+                        "policy": [
+                            {
+                                "@referredType": "Policy",
+                                "name": "PriceRuleNo1",
+                                "id": "2503",
+                                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/policy/2503",
+                                "@type": "PolicyRef",
+                                "topicRef": "kafka://mycsp.com/productCatalogManagement.v5.createProductOfferingPrice.commandRequest"
+                            }
+                        ],
+                        "pricingLogicAlgorithm": [
+                            {
+                                "id": "2777",
+                                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/PricingLogicAlgorithm/2777",
+                                "name": "RecurringRatingPLA",
+                                "description": "Algorithm that rates Recurring event",
+                                "plaSpecId": "2801",
+                                "validFor": {
+                                    "startDateTime": "2020-09-22T16:42:23.000Z",
+                                    "endDateTime": "2021-09-22T00:00:00.000Z"
+                                },
+                                "@type": "PricingLogicAlgorithm",
+                                "topicRef": "kafka://mycsp.com/productCatalogManagement.v5.createProductOfferingPrice.commandRequest"
+                            }
+                        ],
+                        "tax": [
+                            {
+                                "taxAmount": {
+                                    "unit": "EUR",
+                                    "value": 10
+                                },
+                                "taxCategory": "VAT",
+                                "taxRate": 20,
+                                "@type": "TaxItem"
+                            }
+                        ],
+                        "popRelationship": [
+                            {
+                                "id": "1741",
+                                "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v5/productOfferingPrice/1741",
+                                "relationshipType": "discountedBy",
+                                "validFor": {
+                                    "startDateTime": "2020-09-23T16:42:23.000Z",
+                                    "endDateTime": "2021-09-22T00:00:00.000Z"
+                                },
+                                "name": "",
+                                "role": "A-Charge",
+                                "@referredType": "ProductOfferingPriceAlteration",
+                                "@type": "ProductOfferingPriceRelationship",
+                                "topicRef": "kafka://mycsp.com/productCatalogManagement.v5.createProductOfferingPrice.commandRequest"
+                            }
+                        ],
+                        "@type": "ProductOfferingPrice"
+                    },
+                    "headers": {
+                        "Reply-Channel": "productCatalogManagement.v5.createProductOfferingPrice.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "partyManagement.v5.deleteIndividual.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "partyManagement.v5.deleteIndividual.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

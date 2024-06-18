@@ -1,0 +1,24 @@
+{
+    "channel": {
+        "accountManagement.v5.patchBillFormat.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillFormat",
+                        "@baseType": "string",
+                        "@schemaLocation": "string",
+                        "name": "string",
+                        "description": "string"
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.patchBillFormat.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

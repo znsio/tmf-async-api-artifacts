@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+           <testsuite 
+            name="Contract Tests for TMF622e-ProductOrdering-v5.0.0.asyncapi.json" 
+            spec="TMF622e-ProductOrdering-v5.0.0.asyncapi.json" 
+            tests="4" 
+            failures="0" 
+            skipped="0" 
+            errors="0" 
+            time="2.491"
+            reportTitle="CTK Test v5.0.0.Report"
+            brandLogoImagePath="assets/report/img/tmf-logo.svg"
+            brandLogoAltText="TM Forum Logo"
+           >
+        <testcase name="createProductOrder" time="1.696">
+<properties>
+<property name="productOrdering.v5.createProductOrder.commandRequest" value=""><![CDATA[{
+  "payload" : {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : "kafka://host:port/requestTopicName"
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : "kafka://host:port/requestTopicName"
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder"
+  },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.createProductOrder.commandReply",
+    "X-Correlation-Id" : "7525054",
+    "Parameters" : "{}"
+  }
+}]]></property>
+<property name="productOrdering.v5.createProductOrder.commandReply" value=""><![CDATA[{
+  "payload" : {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : ""
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder",
+    "id" : "62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "href" : "http://http-ri:8622/tmf-api/productOrdering/v5/productOrder/62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "creationDate" : "2024-06-17T15:56:58.015Z",
+    "@schemaLocation" : "http://localhost:8622/openapi#/components.schemas.ProductOrder",
+    "@baseType" : "ProductOrder",
+    "topicRef" : ""
+  },
+  "headers" : {
+    "X-Correlation-Id" : "7525054",
+    "Status-Code" : "201",
+    "X-Request-Channel" : "productOrdering.v5.createProductOrder.commandRequest"
+  }
+}]]></property>
+</properties>
+</testcase>
+<testcase name="listProductOrder" time="0.333">
+<properties>
+<property name="productOrdering.v5.listProductOrder.commandRequest" value=""><![CDATA[{
+  "payload" : { },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.listProductOrder.commandReply",
+    "X-Correlation-Id" : "9110042",
+    "Parameters" : "{}"
+  }
+}]]></property>
+<property name="productOrdering.v5.listProductOrder.commandReply" value=""><![CDATA[{
+  "payload" : [ {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : ""
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder",
+    "id" : "62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "href" : "http://http-ri:8622/tmf-api/productOrdering/v5/productOrder/62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "creationDate" : "2024-06-17T15:56:58.015Z",
+    "@schemaLocation" : "http://localhost:8622/openapi#/components.schemas.ProductOrder",
+    "@baseType" : "ProductOrder",
+    "topicRef" : ""
+  } ],
+  "headers" : {
+    "X-Correlation-Id" : "9110042",
+    "Status-Code" : "200",
+    "X-Request-Channel" : "productOrdering.v5.listProductOrder.commandRequest"
+  }
+}]]></property>
+</properties>
+</testcase>
+<testcase name="retrieveProductOrder" time="0.336">
+<properties>
+<property name="productOrdering.v5.retrieveProductOrder.commandRequest" value=""><![CDATA[{
+  "payload" : { },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.retrieveProductOrder.commandReply",
+    "X-Correlation-Id" : "5022594",
+    "Parameters" : "{\n    \"id\": \"62e52965-b30d-4bd5-99bc-5c2bb271738a\"\n}"
+  }
+}]]></property>
+<property name="productOrdering.v5.retrieveProductOrder.commandReply" value=""><![CDATA[{
+  "payload" : {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : ""
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder",
+    "id" : "62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "href" : "http://http-ri:8622/tmf-api/productOrdering/v5/productOrder/62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "creationDate" : "2024-06-17T15:56:58.015Z",
+    "@schemaLocation" : "http://localhost:8622/openapi#/components.schemas.ProductOrder",
+    "@baseType" : "ProductOrder",
+    "topicRef" : ""
+  },
+  "headers" : {
+    "X-Correlation-Id" : "5022594",
+    "Status-Code" : "200",
+    "X-Request-Channel" : "productOrdering.v5.retrieveProductOrder.commandRequest"
+  }
+}]]></property>
+</properties>
+</testcase>
+<testcase name="deleteProductOrder" time="0.126">
+<properties>
+<property name="productOrdering.v5.deleteProductOrder.commandRequest" value=""><![CDATA[{
+  "payload" : { },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.deleteProductOrder.commandReply",
+    "X-Correlation-Id" : "9968411",
+    "Parameters" : "{\n    \"id\": \"62e52965-b30d-4bd5-99bc-5c2bb271738a\"\n}"
+  }
+}]]></property>
+<property name="productOrdering.v5.deleteProductOrder.commandReply" value=""><![CDATA[{
+  "payload" : { },
+  "headers" : {
+    "X-Correlation-Id" : "9968411",
+    "Status-Code" : "204",
+    "X-Request-Channel" : "productOrdering.v5.deleteProductOrder.commandRequest"
+  }
+}]]></property>
+</properties>
+</testcase>
+</testsuite>

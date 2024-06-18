@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "accountManagement.v5.listSettlementAccount.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.listSettlementAccount.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

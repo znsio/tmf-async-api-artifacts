@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "troubleTicket.v5.retrieveTroubleTicket.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "troubleTicket.v5.retrieveTroubleTicket.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

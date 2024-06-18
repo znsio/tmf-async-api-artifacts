@@ -1,0 +1,32 @@
+{
+    "TestCases": [
+        {
+            "Status": "Success",
+            "Time": 1.696,
+            "Name": "createProductOrder"
+        },
+        {
+            "Status": "Success",
+            "Time": 0.333,
+            "Name": "listProductOrder"
+        },
+        {
+            "Status": "Success",
+            "Time": 0.336,
+            "Name": "retrieveProductOrder"
+        },
+        {
+            "Status": "Success",
+            "Time": 0.126,
+            "Name": "deleteProductOrder"
+        }
+    ],
+    "Summary": {
+        "Errors": 0,
+        "Skipped": 0,
+        "Time": 2.4909999999999997,
+        "SuccessRate": 100,
+        "Failures": 0,
+        "Tests": 4
+    }
+}

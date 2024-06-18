@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "productOrdering.v5.deleteProductOrder.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "productOrdering.v5.deleteProductOrder.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

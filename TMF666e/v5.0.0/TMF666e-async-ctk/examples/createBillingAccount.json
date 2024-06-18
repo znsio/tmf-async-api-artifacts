@@ -1,0 +1,33 @@
+{
+    "channel": {
+        "accountManagement.v5.createBillingAccount.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillingAccount",
+                        "name": "Home Account",
+                        "relatedParty": [
+                            {
+                                "role": "service provider",
+                                "@type": "RelatedPartyRefOrRelatedPartyRoleRef",
+                                "partyOrPartyRole": {
+                                    "@type": "PartyRefOrPartyRoleRef",
+                                    "@referredType": "Organization",
+                                    "href": "https://host:port/tmf-api/partyManagement/v5/organization/9947",
+                                    "id": "9947",
+                                    "name": "Richard Cole",
+                                    "topicRef": "kafka://host:port/requestTopicName"
+                                }
+                            }
+                        ]
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.createBillingAccount.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "partyManagement.v5.listOrganization.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "partyManagement.v5.listOrganization.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

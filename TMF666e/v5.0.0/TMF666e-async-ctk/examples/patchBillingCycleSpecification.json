@@ -1,0 +1,21 @@
+{
+    "channel": {
+        "accountManagement.v5.patchBillingCycleSpecification.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillingCycleSpecification",
+                        "mailingDateOffset": 30
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.patchBillingCycleSpecification.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

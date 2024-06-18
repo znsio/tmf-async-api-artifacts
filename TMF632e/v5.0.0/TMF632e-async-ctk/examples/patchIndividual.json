@@ -1,0 +1,21 @@
+{
+    "channel": {
+        "partyManagement.v5.patchIndividual.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Individual",
+                        "maritalStatus": "divorced"
+                    },
+                    "headers": {
+                        "Reply-Channel": "partyManagement.v5.patchIndividual.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

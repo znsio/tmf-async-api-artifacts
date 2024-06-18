@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contract Tests for TMF622e-ProductOrdering-v5.0.0.asyncapi.json</title>
+<style>
+    body { font-family: "Roboto", Helvetica, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
+    .container { width: 90%; margin: 20px auto; }
+    
+    .report-header-title {
+        font-family: "Roboto", Helvetica;
+        font-weight: 500;
+        color: #0d2548;
+        font-size: 28px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    }
+
+    .report-header {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .spec-file-name {
+        font-family: "Roboto", Helvetica;
+        font-weight: 700;
+        color: #0d2548;
+        font-size: 32px;
+        letter-spacing: -0.64px;
+        line-height: normal;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #333;
+    }
+
+    .header-icons.kt {
+      /* Adjust as needed */
+    }
+
+    .icon {
+      font-size: 24px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+    
+    .summary { background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .summary-table { width: 100%; border-collapse: collapse; }
+    .summary-table th, .summary-table td { text-align: left; padding: 8px; }
+    .summary-table th { background-color: #4CAF50; color: white; }
+    .summary-table td { background-color: #ebf5eb; }
+    .summary-table tr:nth-child(even) { background-color: #f2f2f2; }
+    
+    .test-report-summary {
+        background-color: #d4edda;
+        padding: 10px;
+        display: flex;
+    }
+
+    .test-report-summary h1 {
+        margin: 0;
+        padding: 0;
+        color: #333;
+        margin-top:20px;
+        margin-bottom:20px;
+        margin-left:15px;
+    }
+
+    .test-report-results {
+        display: flex;
+        justify-content: flex-start;
+        align-items: left;
+        flex-wrap: wrap;
+        gap: 50px;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        gap: 45px;
+        margin-left:15px;
+    }
+    
+    .failed-label {
+         color: #ef4444;
+    }
+    
+    .skipped-label {
+         color: #ca8a04;
+    }
+    
+    .default-label {
+         color: #4b5563;
+    }
+    
+    .success-rate-label {
+         color: #16a34a;
+    }
+    
+    .status-label {
+        margin-left:5px;
+        margin-right:5px;
+        font-weight: 400;
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    }
+
+    .test-failed,
+    .test-errors,
+    .test-skipped,
+    .test-success,
+    .test-time,
+    .test-total {
+        display: flex;
+        align-items: center;
+    }
+
+    .test-failed {
+        color: #721c24;
+    }
+
+    .test-success {
+        color: #155724;
+    }
+
+    .test-skipped {
+        color: #856404;
+    }
+
+    .test-time {
+        color: #0c5460;
+    }
+
+    .test-total {
+        color: #383d41;
+    }
+    
+    .approve-reject-status {
+        margin-left:auto;  
+        margin-top:25px;
+        margin-right:20px;
+    }
+    
+    .test-report-icon {
+        height: 100px;
+        width: auto;
+        margin-left: auto; /* This pushes the icon to the right */
+        margin-right:100px;
+    }
+    
+    .approve-bg {
+        width: 70px;
+        height: 70px;
+        background-image: url(assets/report/img/approve-star.svg);
+        background-size: 100% 100%;
+    }
+    
+    .approve-tick {
+        position: relative;
+        width: 34px;
+        height: 24px;
+        top: 23px;
+        left: 18px;
+    }
+    
+    .reject-bg {
+        width: 70px;
+        height: 70px;
+        background-image: url(assets/report/img/reject-star.svg);
+        background-size: 100% 100%;
+    }
+    
+    .reject-cross {
+        position: relative;
+        width: 34px;
+        height: 24px;
+        top: 23px;
+        left: 18px;
+    }
+    
+    .test-name {
+        font-family: "Roboto", Helvetica;
+        font-weight: 550;
+        color: #0d2548;
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+        display: flex;
+        gap: 20px;
+        margin-top:10px;
+    }
+    
+    .passed-test-label-wrapper {
+        width: 49px;
+        height: 24px;
+        background-color: #bbf7d0;
+        border-radius: 34px;
+    }
+    
+    .passed-test-label {
+        position: relative;
+        height: 16px;
+        top: 4px;
+        left: 8px;
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #16a34a;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    }
+    
+    .failed-test-label-wrapper {
+        width: 54px;
+        height: 24px;
+        background-color: #fee2e2;
+        border-radius: 34px;
+    }
+    
+    .failed-test-label {
+        position: relative;
+        height: 16px;
+        top: 4px;
+        left: 8px;
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #ef4444;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    }
+    
+    .skipped-test-label-wrapper {
+        width: 66px;
+        height: 24px;
+        background-color: #fefbd2;
+        border-radius: 34px;
+    }
+    
+    .skipped-test-label {
+        position: relative;
+        height: 16px;
+        top: 4px;
+        left: 8px;
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #ca8a04;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    }
+    
+    .test-duration { 
+        width: 49px;
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #4b5563;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+        margin-left:auto; 
+        margin-right:40px;
+    }
+    
+    .testcase { background-color: #ffffff; margin-top: 10px; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .testcase h2 { color: #333; margin: 0; }
+    .failure { color: #D32F2F; }
+    .success { color: #388E3C; font-size: 1.2em; font-weight: bold; }
+    .error-message { margin: 10px 0; padding: 10px; background-color: #ffdada; border-left: 3px solid #D32F2F; border-radius: 4px; }
+    .skipped-message {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #fff9c4;
+        border-left: 3px solid #FBC02D;
+        border-radius: 4px;
+    }
+    .icon-fail { 
+        color: #D32F2F; 
+        margin-right: 5px; 
+        padding: 4px; /* Increased padding for a larger icon */
+        align-items: center;
+        justify-content: center;
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+    }
+    .icon-pass { 
+        color: #388E3C; 
+        margin-right: 5px; 
+        padding: 4px; /* Increased padding for a larger icon */
+        align-items: center;
+        justify-content: center;
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+    }
+    .icon-skipped {
+        color: #FBC02D; /* Deep yellow color for the icon */
+        margin-right: 5px;
+        padding: 4px; /* Increased padding for a larger icon */
+        align-items: center;
+        justify-content: center;
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+        font-size: 150%;
+    }
+    .collapse { display: none; }
+    .message-details-block:hover { cursor: pointer; }
+    .message-details-title, .step-details-title-text {
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #3577da;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+     }
+     
+    .actual-message { white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
+    
+    .precondition-message {
+        cursor: pointer;
+        display:flex;
+        flex-wrap: wrap;
+    }
+    
+    .precondition-message-expander {
+        margin-left:auto;
+    }
+    
+    .footer { 
+        display:flex;
+        margin-top:20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .generated-on {
+        display: flex;
+    }
+    
+    .generated-on-text {
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #9da6ab;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    } 
+    
+    .generated-on-date {
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #4b5563;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+        margin-left: 2px;
+    }
+    
+    .powered-by-specmatic {
+        width: 174px;
+        height: 24px;
+        display:flex
+    }
+    
+    .powered-by-text {
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #4b5563;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+        margin-top: 7px;
+    }
+    
+    .specmatic-logo {
+        position: relative;
+        width: 102px;
+        height: 24px;
+        left: 10px;
+        object-fit: cover;
+    }
+    
+    .copyright {
+        display:flex;
+    }
+    
+    .copyright-text {
+        font-family: "Roboto", Helvetica;
+        font-weight: 400;
+        color: #4b5563;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+    } 
+    .copyright-symbol {
+        position: relative;
+        width: 10px;
+        height: 10px;
+        top: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    
+    .expander-arrow {
+        width: 14px;
+        height: 8px;
+        float:right;
+        margin-right: 20px;
+        vertical-align:sub;
+    }
+    
+    .precondition-expander-arrow-icon {
+        width: 14px;
+        height: 8px;
+        margin-right: 50px;
+    }
+    
+    .push-to-next-line {
+      flex-basis: 100%; /* This will take full width forcing subsequent items to the next line */
+      /* or you could use width: 100%; */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="report-header" id="report-header">
+    <img 
+        id="report-header-brand-logo"
+        width="180" 
+        height="50" 
+        src=assets/report/img/tmf-logo.svg
+        alt=TM Forum Logo
+        onerror="this.src='assets/report/img/specmatic-logo.png'"
+    />   
+    <h1 class="report-header-title" id="report-header-title">
+        CTK Test v5.0.0.Report 
+    </h1>
+    <div class="header-icons">
+        <img width="24" style="border: 1px solid; padding: 7px; cursor: pointer;" onclick="window.print();"  src="assets/report/img/download.svg" alt="TM Forum Logo" />
+    </div>
+</header><div class="test-report-summary">
+    <div>
+        <h1 class="spec-file-name">TMF622e-ProductOrdering-v5.0.0.asyncapi.json</h1>
+        <div class="test-report-results">
+            <span class="test-success"<img src="assets/report/img/green-tick-circle.svg"><span class="status-label success-rate-label">Success Rate</span> 100%</span>
+            <span class="test-failed"><img src="assets/report/img/x-circle-red.svg"><span class="status-label failed-label">Failed</span> 0</span>
+            <span class="test-errors"><img src="assets/report/img/alert-triangle.svg"><span class="status-label default-label">Errors</span> 0</span>
+            <span class="test-skipped"><img src="assets/report/img/slash_circle.svg"><span class="status-label skipped-label">Skipped</span> 0</span>
+            <span class="test-time"><img src="assets/report/img/clock.svg"><span class="status-label default-label">Total Time</span> 2.49s</span>
+            <span class="test-total"><img src="assets/report/img/clipboard.svg"><span class="status-label default-label">Total Tests</span> 4</span>
+        </div>
+    </div>
+    <div class="approve-reject-status">
+        <div class="approve-bg">
+            <img src="assets/report/img/white-tick.png" class="approve-tick">
+        </div>
+    </div>
+</div
+<div class="test-summary" id="test-summary"><div class="testcase">
+<div class="test-name">createProductOrder <div class="passed-test-label-wrapper">
+    <div class="passed-test-label">Pass</div>
+</div> <span class="test-duration"><img src="assets/report/img/clock.svg" style="margin-right:5px; vertical-align:sub;" />1.696s</span>
+</div>
+<div class="message-details-block">
+<div class="message-details">
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 1. productOrdering.v5.createProductOrder.commandRequest &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : "kafka://host:port/requestTopicName"
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : "kafka://host:port/requestTopicName"
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : "kafka://host:port/requestTopicName"
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder"
+  },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.createProductOrder.commandReply",
+    "X-Correlation-Id" : "7525054",
+    "Parameters" : "{}"
+  }
+}</pre>
+<br>
+</div>
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 2. productOrdering.v5.createProductOrder.commandReply &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : ""
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder",
+    "id" : "62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "href" : "http://http-ri:8622/tmf-api/productOrdering/v5/productOrder/62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "creationDate" : "2024-06-17T15:56:58.015Z",
+    "@schemaLocation" : "http://localhost:8622/openapi#/components.schemas.ProductOrder",
+    "@baseType" : "ProductOrder",
+    "topicRef" : ""
+  },
+  "headers" : {
+    "X-Correlation-Id" : "7525054",
+    "Status-Code" : "201",
+    "X-Request-Channel" : "productOrdering.v5.createProductOrder.commandRequest"
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="testcase">
+<div class="test-name">listProductOrder <div class="passed-test-label-wrapper">
+    <div class="passed-test-label">Pass</div>
+</div> <span class="test-duration"><img src="assets/report/img/clock.svg" style="margin-right:5px; vertical-align:sub;" />0.333s</span>
+</div>
+<div class="message-details-block">
+<div class="message-details">
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 1. productOrdering.v5.listProductOrder.commandRequest &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : { },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.listProductOrder.commandReply",
+    "X-Correlation-Id" : "9110042",
+    "Parameters" : "{}"
+  }
+}</pre>
+<br>
+</div>
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 2. productOrdering.v5.listProductOrder.commandReply &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : [ {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : ""
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder",
+    "id" : "62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "href" : "http://http-ri:8622/tmf-api/productOrdering/v5/productOrder/62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "creationDate" : "2024-06-17T15:56:58.015Z",
+    "@schemaLocation" : "http://localhost:8622/openapi#/components.schemas.ProductOrder",
+    "@baseType" : "ProductOrder",
+    "topicRef" : ""
+  } ],
+  "headers" : {
+    "X-Correlation-Id" : "9110042",
+    "Status-Code" : "200",
+    "X-Request-Channel" : "productOrdering.v5.listProductOrder.commandRequest"
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="testcase">
+<div class="test-name">retrieveProductOrder <div class="passed-test-label-wrapper">
+    <div class="passed-test-label">Pass</div>
+</div> <span class="test-duration"><img src="assets/report/img/clock.svg" style="margin-right:5px; vertical-align:sub;" />0.336s</span>
+</div>
+<div class="message-details-block">
+<div class="message-details">
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 1. productOrdering.v5.retrieveProductOrder.commandRequest &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : { },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.retrieveProductOrder.commandReply",
+    "X-Correlation-Id" : "5022594",
+    "Parameters" : "{\n    \"id\": \"62e52965-b30d-4bd5-99bc-5c2bb271738a\"\n}"
+  }
+}</pre>
+<br>
+</div>
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 2. productOrdering.v5.retrieveProductOrder.commandReply &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : {
+    "category" : "B2C product order",
+    "description" : "Product Order illustration sample",
+    "externalId" : [ {
+      "@type" : "ExternalIdentifier",
+      "owner" : "TMF",
+      "externalIdentifierType" : "POnumber",
+      "id" : "456"
+    } ],
+    "priority" : "1",
+    "requestedCompletionDate" : "2019-05-02T08:13:59.506Z",
+    "requestedStartDate" : "2019-05-03T08:13:59.506Z",
+    "channel" : [ {
+      "role" : "Used channel for order capture",
+      "@type" : "RelatedChannel",
+      "channel" : {
+        "id" : "1",
+        "name" : "Online channel",
+        "@type" : "ChannelRef"
+      }
+    } ],
+    "note" : [ {
+      "id" : "1",
+      "author" : "Jean Pontus",
+      "date" : "2019-04-30T08:13:59.509Z",
+      "text" : "This is a TMF product order illustration",
+      "@type" : "Note"
+    } ],
+    "productOrderItem" : [ {
+      "id" : "100",
+      "quantity" : 1,
+      "action" : "add",
+      "productOffering" : {
+        "id" : "14277",
+        "name" : "TMF25",
+        "@type" : "ProductOfferingRef"
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "120",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      }, {
+        "id" : "130",
+        "relationshipType" : "bundles",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "110",
+      "quantity" : 1,
+      "action" : "add",
+      "itemPrice" : [ {
+        "description" : "Access Fee",
+        "name" : "Access Fee",
+        "@type" : "OrderPrice",
+        "priceType" : "nonRecurring",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 0.99
+          }
+        }
+      } ],
+      "payment" : [ {
+        "id" : "2365",
+        "href" : "https://host:port/paymentManagement/v5/cashPayment/2365",
+        "name" : "Cash payment for access fee",
+        "@type" : "PaymentRef",
+        "@referredType" : "CashPayment",
+        "topicRef" : ""
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "TEL_MSISDN",
+          "id" : "Char6",
+          "@type" : "StringCharacteristic",
+          "value" : "415 279 7439",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14307",
+          "name" : "Mobile Telephony",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef"
+        }
+      },
+      "productOffering" : {
+        "id" : "14305",
+        "name" : "TMF Mobile Telephony",
+        "@type" : "ProductOfferingRef"
+      },
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "120",
+      "quantity" : 1,
+      "action" : "add",
+      "billingAccount" : {
+        "id" : "1513",
+        "@type" : "BillingAccountRef"
+      },
+      "itemPrice" : [ {
+        "description" : "Tariff plan monthly fee",
+        "name" : "MonthlyFee",
+        "priceType" : "recurring",
+        "@type" : "OrderPrice",
+        "recurringChargePeriod" : "month",
+        "price" : {
+          "taxRate" : 0,
+          "@type" : "Price",
+          "dutyFreeAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          },
+          "taxIncludedAmount" : {
+            "unit" : "EUR",
+            "value" : 20
+          }
+        },
+        "priceAlteration" : [ {
+          "applicationDuration" : 3,
+          "description" : "20% for first 3 months",
+          "name" : "WelcomeDiscount",
+          "priceType" : "recurring",
+          "priority" : 1,
+          "recurringChargePeriod" : "month",
+          "@type" : "PriceAlteration",
+          "price" : {
+            "percentage" : 20,
+            "taxRate" : 0,
+            "@type" : "Price"
+          }
+        } ]
+      } ],
+      "itemTerm" : [ {
+        "description" : "Tariff plan 12 Months commitment",
+        "name" : "12Months",
+        "@type" : "OrderTerm",
+        "duration" : {
+          "amount" : 12,
+          "units" : "month",
+          "@type" : "Duration"
+        }
+      } ],
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productSpecification" : {
+          "id" : "14395",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14395",
+          "name" : "TMF Tariff plan",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14344",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14344",
+        "name" : "TMF Tariff Plan",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "OrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    }, {
+      "id" : "130",
+      "quantity" : 1,
+      "action" : "add",
+      "product" : {
+        "isBundle" : false,
+        "@type" : "Product",
+        "productCharacteristic" : [ {
+          "name" : "CoverageOptions",
+          "id" : "Char7",
+          "@type" : "StringCharacteristic",
+          "value" : "National",
+          "valueType" : "string"
+        } ],
+        "productSpecification" : {
+          "id" : "14353",
+          "href" : "https://host:port/productCatalogManagement/v5/productSpecification/14353",
+          "name" : "Coverage",
+          "version" : "1",
+          "@type" : "ProductSpecificationRef",
+          "topicRef" : ""
+        }
+      },
+      "productOffering" : {
+        "id" : "14354",
+        "href" : "https://host:port/productCatalogManagement/v5/productOffering/14354",
+        "name" : "Coverage Options",
+        "@type" : "ProductOfferingRef",
+        "topicRef" : ""
+      },
+      "productOrderItemRelationship" : [ {
+        "id" : "110",
+        "relationshipType" : "reliesOn",
+        "@type" : "ProductOrderItemRelationship"
+      } ],
+      "@type" : "ProductOrderItem"
+    } ],
+    "relatedParty" : [ {
+      "role" : "Seller",
+      "partyOrPartyRole" : {
+        "id" : "456-dd-df45",
+        "href" : "https://host:port/partyManagement/v5/individual/456-dd-df45",
+        "name" : "Joe Doe",
+        "@type" : "PartyRef",
+        "@referredType" : "Individual",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    }, {
+      "role" : "Customer",
+      "partyOrPartyRole" : {
+        "id" : "ff55-hjy4",
+        "href" : "https://host:port/partyRoleManagement/v5/customer/ff55-hjy4",
+        "name" : "Jean Pontus",
+        "@type" : "PartyRoleRef",
+        "@referredType" : "Customer",
+        "topicRef" : ""
+      },
+      "@type" : "RelatedPartyRefOrPartyRoleRef"
+    } ],
+    "@type" : "ProductOrder",
+    "id" : "62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "href" : "http://http-ri:8622/tmf-api/productOrdering/v5/productOrder/62e52965-b30d-4bd5-99bc-5c2bb271738a",
+    "creationDate" : "2024-06-17T15:56:58.015Z",
+    "@schemaLocation" : "http://localhost:8622/openapi#/components.schemas.ProductOrder",
+    "@baseType" : "ProductOrder",
+    "topicRef" : ""
+  },
+  "headers" : {
+    "X-Correlation-Id" : "5022594",
+    "Status-Code" : "200",
+    "X-Request-Channel" : "productOrdering.v5.retrieveProductOrder.commandRequest"
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="testcase">
+<div class="test-name">deleteProductOrder <div class="passed-test-label-wrapper">
+    <div class="passed-test-label">Pass</div>
+</div> <span class="test-duration"><img src="assets/report/img/clock.svg" style="margin-right:5px; vertical-align:sub;" />0.126s</span>
+</div>
+<div class="message-details-block">
+<div class="message-details">
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 1. productOrdering.v5.deleteProductOrder.commandRequest &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : { },
+  "headers" : {
+    "Reply-Channel" : "productOrdering.v5.deleteProductOrder.commandReply",
+    "X-Correlation-Id" : "9968411",
+    "Parameters" : "{\n    \"id\": \"62e52965-b30d-4bd5-99bc-5c2bb271738a\"\n}"
+  }
+}</pre>
+<br>
+</div>
+<h4 class="step-details-title"><span style="" class="icon-pass"><img style="vertical-align:sub;" src="assets/report/img/green-tick-circle.svg"/></span><span class="step-details-title-text">Step 2. productOrdering.v5.deleteProductOrder.commandReply &#8230;</span><img class="expander-arrow" src="assets/report/img/expander-arrow-down.svg"></h4>
+<div class="message-detail-body collapse">
+<pre class="actual-message">{
+  "payload" : { },
+  "headers" : {
+    "X-Correlation-Id" : "9968411",
+    "Status-Code" : "204",
+    "X-Request-Channel" : "productOrdering.v5.deleteProductOrder.commandRequest"
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+   <div class="generated-on">
+     <div class="generated-on-text">Generated on: </div>
+     <div class="generated-on-date">Mon, Jun 17 2024 3:56PM</div>
+   </div>
+    <div class="powered-by-specmatic">
+      <div class="powered-by-text">Powered by</div>
+      <img class="specmatic-logo" src="assets/report/img/specmatic-logo.png">
+    </div>
+    <div class="copyright">
+      <div class="copyright-text">Copyright</div>
+      <img class="copyright-symbol" src="assets/report/img/copyright-symbol.svg">
+      <div class="copyright-text">All Rights Reserved</div>
+    </div>
+</div><script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    function findSiblingWithClass(element, className) {
+        let sibling = element.nextElementSibling;
+
+        while (sibling) {
+            if (sibling.classList.contains(className)) {
+                return sibling;
+            }
+            
+            console.log(classList);
+            
+            sibling = sibling.nextElementSibling;
+        }
+
+        return null;
+    }
+    
+    function toggleCollapseMessageDetails() {
+      let detailDiv = findSiblingWithClass(this, 'message-details');
+                            
+      if (detailDiv) {
+        detailDiv.classList.toggle('collapse');
+      }
+    }
+
+    function toggleCollapseIndividualMessageDetails() {
+      let detailDiv = findSiblingWithClass(this, 'message-detail-body');
+                            
+      if (detailDiv) {
+        detailDiv.classList.toggle('collapse');
+      }
+    }
+    
+  
+    function toggleCollapsePreConditionMessageDetails() {
+      let detailDiv = this.querySelector('.precondition-message-details')
+                            
+      if (detailDiv) {
+        detailDiv.classList.toggle('collapse');
+      }
+    } 
+
+    const messageDetailsTitles = document.querySelectorAll('.message-details-title');
+    messageDetailsTitles.forEach(messageDetailsTitle => {
+      messageDetailsTitle.addEventListener('click', toggleCollapseMessageDetails);
+    });
+
+    const individualMessageDetailTitles = document.querySelectorAll('.step-details-title');
+    individualMessageDetailTitles.forEach(individualMessageDetailTitle => {
+      individualMessageDetailTitle.addEventListener('click', toggleCollapseIndividualMessageDetails);
+    });
+    
+    const preConditionMessages = document.querySelectorAll('.precondition-message');
+    preConditionMessages.forEach(preConditionMessage => {
+      preConditionMessage.addEventListener('click', toggleCollapsePreConditionMessageDetails);
+    });
+  });
+</script></div></body></html>

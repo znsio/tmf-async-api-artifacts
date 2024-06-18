@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "accountManagement.v5.listFinancialAccount.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.listFinancialAccount.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

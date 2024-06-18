@@ -1,0 +1,20 @@
+{
+    "channel": {
+        "partyManagement.v5.createOrganization.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Organization",
+                        "@baseType": "Party",
+                        "name": "Coffee Do Brazil"
+                    },
+                    "headers": {
+                        "Reply-Channel": "partyManagement.v5.createOrganization.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

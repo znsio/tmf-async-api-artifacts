@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "productInventory.v5.listProduct.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "productInventory.v5.listProduct.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "channel": {
+        "productInventory.v5.retrieveProduct.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "productInventory.v5.retrieveProduct.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

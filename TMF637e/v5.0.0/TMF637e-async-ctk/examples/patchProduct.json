@@ -1,0 +1,21 @@
+{
+    "channel": {
+        "productInventory.v5.patchProduct.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "Product",
+                        "status": "active"
+                    },
+                    "headers": {
+                        "Reply-Channel": "productInventory.v5.patchProduct.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {
+                            "id": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

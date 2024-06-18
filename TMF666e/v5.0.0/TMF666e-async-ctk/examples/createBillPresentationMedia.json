@@ -1,0 +1,19 @@
+{
+    "channel": {
+        "accountManagement.v5.createBillPresentationMedia.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {
+                        "@type": "BillPresentationMedia",
+                        "name": "Electronic"
+                    },
+                    "headers": {
+                        "Reply-Channel": "accountManagement.v5.createBillPresentationMedia.commandReply",
+                        "X-Correlation-Id": "1234567",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

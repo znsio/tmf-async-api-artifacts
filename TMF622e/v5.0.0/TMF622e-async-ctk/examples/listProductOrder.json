@@ -1,0 +1,16 @@
+{
+    "channel": {
+        "productOrdering.v5.listProductOrder.commandRequest": {
+            "publish": {
+                "message": {
+                    "payload": {},
+                    "headers": {
+                        "Reply-Channel": "productOrdering.v5.listProductOrder.commandReply",
+                        "X-Correlation-Id": "1111111",
+                        "Parameters": {}
+                    }
+                }
+            }
+        }
+    }
+}

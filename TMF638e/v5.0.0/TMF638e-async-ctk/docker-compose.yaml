@@ -1,0 +1,11 @@
+services:
+    ctk:
+        environment:
+            ENTITIES: Service
+            TOP_LEVEL_ENTITY: serviceInventoryManagement
+        image: ghcr.io/tmforum-rand/ctk_docker_images/async-ctk-v5:latest
+        network_mode: host
+        volumes:
+        - .:/app
+        working_dir: /app
+version: '3.8'
